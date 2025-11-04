@@ -1,0 +1,249 @@
+
+---
+
+ 📘 Software Requirements Specification (SRS)
+
+Project Name: PulseGuard: Critical Alerting & Escalation System for Hospitals
+Prepared by: \[Your Name] (Solo Manual Tester)
+Document Version: v1.0
+Date: 05-Aug-2025
+
+---
+
+ 1. Introduction
+
+ 1.1 Purpose
+
+PulseGuard is a critical alerting and escalation system designed for hospitals to manage patient-related alerts in real-time. The goal is to reduce response times, ensure alert acknowledgment, enable automatic escalations, and maintain compliance with service-level agreements (SLAs). This document defines all requirements and modules for building robust test cases.
+
+---
+
+ 2. Scope
+
+PulseGuard will:
+
+* Receive real-time alerts from patient monitoring systems.
+* Display alerts in a user-friendly dashboard.
+* Support filtering, sorting, and search.
+* Escalate unacknowledged alerts based on time thresholds.
+* Notify users via SMS, email, or push.
+* Allow acknowledgment and comments from staff.
+* Provide audit logs, reporting, and admin configuration options.
+* Work smoothly on mobile, tablet, and desktop.
+
+---
+
+ 3. Modules Overview
+
+The system is divided into 8 major modules:
+
+| Module No. | Name                      |
+| ---------- | ------------------------- |
+| 1          | Alert Monitoring UI       |
+| 2          | Escalation Workflow       |
+| 3          | Acknowledgment & Comments |
+| 4          | Admin Configurations      |
+| 5          | Notification System       |
+| 6          | Reports & Audit Logs      |
+| 7          | Security & Access Control |
+| 8          | Dashboard Responsiveness  |
+
+---
+
+ 4. Detailed Module Requirements
+
+---
+
+ 🔷 1. Alert Monitoring UI
+
+Description:
+Central dashboard where alerts are displayed in real-time with filtering, searching, and severity highlighting.
+
+Functional Requirements:
+
+* Real-time alerts from patient monitoring systems.
+* Visual differentiation based on severity (Critical, High, Medium, Low).
+* Auto-refresh of alert list.
+* Filter by:
+
+  * Date/time
+  * Department
+  * Alert type
+  * Severity
+* Mark alert status: unresolved, acknowledged.
+* Search by:
+
+  * Patient ID
+  * Room number
+  * Alert ID
+* Sort alerts by:
+
+  * Time
+  * Severity
+  * Escalation status
+* View alert details (patient info, room, timestamp).
+* Mobile responsive layout.
+
+---
+
+ 🔷 2. Escalation Workflow
+
+Description:
+Automated escalation process for alerts not acknowledged in time.
+
+Functional Requirements:
+
+* Auto-escalation based on configurable time thresholds.
+* Multi-level escalation logic (Nurse → Doctor → Admin).
+* Rules per alert type and department.
+* If user fails to respond, notify next in hierarchy.
+* Display full escalation path history per alert.
+* Admin can manually override escalation.
+* Re-triggering alerts if still inactive.
+* SLA violation marker.
+
+---
+
+ 🔷 3. Acknowledgment & Comments
+
+Description:
+Allows healthcare staff to acknowledge alerts and add comments.
+
+Functional Requirements:
+
+* Acknowledge alerts manually.
+* Add free-text comments on alerts.
+* View acknowledgment history.
+* Prevent duplicate acknowledgment.
+* Mark alerts as resolved post-action.
+
+---
+
+ 🔷 4. Admin Configurations
+
+Description:
+Admin can customize rules, departments, alert types, escalation paths.
+
+Functional Requirements:
+
+* Define departments and user roles.
+* Configure escalation rules (timers, levels).
+* Define alert types and severity mapping.
+* Set user permissions and access levels.
+* Maintain audit logs for every config change.
+
+---
+
+ 🔷 5. Notification System
+
+Description:
+Responsible for alert delivery via multiple channels.
+
+Functional Requirements:
+
+* Send SMS/Email/Push notifications.
+* Configurable templates by admin.
+* Track delivery and failure reports.
+* Retry failed notifications.
+* Maintain user-wise notification history.
+* DND (Do Not Disturb) support.
+* High priority tags for escalated notifications.
+
+---
+
+ 🔷 6. Reports & Audit Logs
+
+Description:
+Monitor alert handling efficiency, SLA breaches, and user activity.
+
+Functional Requirements:
+
+* Generate reports on:
+
+  * Alert response time by department/user.
+  * SLA compliance for escalations.
+* User activity logs: login, acknowledgment, comments.
+* Export to PDF/Excel.
+* Audit trail for all configuration changes.
+* Schedule reports daily/weekly/monthly.
+
+---
+
+ 🔷 7. Security & Access Control
+
+Description:
+Manages login, user roles, and permissions.
+
+Functional Requirements:
+
+* Role-based access: Admin, Doctor, Nurse.
+* Secure login with password policy.
+* Session timeout and logout rules.
+* Only authorized users can acknowledge/escalate.
+* Logs for unauthorized access attempts.
+
+---
+
+ 🔷 8. Dashboard Responsiveness
+
+Description:
+Ensure dashboard works efficiently on all device sizes.
+
+Functional Requirements:
+
+* Mobile/tablet responsive layout.
+* Resize/reposition widgets for small screens.
+* Easy access with minimal clicks.
+* Show critical alerts first.
+* Fast loading (<2 seconds on 4G).
+
+---
+
+ 5. Non-Functional Requirements
+
+* System uptime: 99.9%
+* Mobile-first responsive design
+* Real-time performance under load
+* Secure role-based authentication
+* Log archival for minimum 1 year
+
+---
+
+ 6. User Roles
+
+| Role    | Access Rights                                  |
+| ------- | ---------------------------------------------- |
+| Admin   | Full control of all modules                    |
+| Doctor  | View, acknowledge, escalate, comment           |
+| Nurse   | View, acknowledge, escalate (partial), comment |
+| Auditor | View reports and logs                          |
+
+---
+
+ 7. Assumptions and Constraints
+
+* Hospital network must support real-time sync.
+* User mobile numbers/email IDs are registered for notifications.
+* Integration with hospital alert generation systems is assumed.
+
+---
+
+ 8. Future Enhancements (Optional)
+
+* Voice notifications via IVR.
+* Integration with hospital ERP systems.
+* Predictive analytics for alert patterns.
+
+---
+
+✅ Cross-Checked Additions:
+
+* SLA tracking
+* Retry logic in notifications
+* DND configuration
+* Full role-based access
+* Real-time auto-refresh
+* Alert re-trigger after escalation
+* Responsive dashboard behavior
+
+---
